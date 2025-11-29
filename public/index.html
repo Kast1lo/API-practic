@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оптимизированное API — Демо</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🚀 Оптимизация API в действии</h1>
+      <p>Пагинация • Кэширование • Rate Limit • Ленивая загрузка</p>
+    </header>
+
+    <div class="cards">
+      <!-- Медленный эндпоинт -->
+      <div class="card">
+        <h3>Медленный запрос (с кэшем)</h3>
+        <button id="slowBtn">Запросить /slow</button>
+        <div id="slowResult"></div>
+      </div>
+
+      <!-- Rate limit тест -->
+      <div class="card">
+        <h3>Rate Limit (5 запросов/мин)</h3>
+        <button id="spamBtn">Спамить /slow</button>
+        <div id="spamResult"></div>
+      </div>
+    </div>
+
+    <!-- Товары с пагинацией -->
+    <div class="products-section">
+      <h2>Товары (100 шт)</h2>
+      <div class="controls">
+        <input type="number" id="page" value="1" min="1">
+        <input type="number" id="limit" value="10" min="1" max="50">
+        <input type="text" id="fields" placeholder="fields=id,name,price">
+        <button id="loadProducts">Загрузить</button>
+      </div>
+
+      <div id="productsGrid"></div>
+      <div class="pagination">
+        <button id="prev">« Назад</button>
+        <span id="pageInfo"></span>
+        <button id="next">Вперёд »</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
