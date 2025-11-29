@@ -6,12 +6,12 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// === Задача 1: Привет, мир! ===
+//Задача 1: Привет, мир!
 app.get('/', (req, res) => {
   res.send('Привет, мир!');
 });
 
-// === Задача 2 + 3: Медленный эндпоинт + кэширование ===
+//Задача 2 + 3: Медленный эндпоинт + кэширование
 const cache = {};
 
 const slowResponse = {
@@ -29,17 +29,17 @@ app.get('/slow', async (req, res) => {
   res.json(slowResponse);
 });
 
-// === Rate Limiting для /slow (Задача 5) ===
+//Rate Limiting для /slow (Задача 5)
 const limiter = rateLimit({
   windowMs: 60 * 1000, // 1 минута
   max: 5,
-  message: { error: "Слишком много запросов! Подожди минутку 😅" },
+  message: { error: "Слишком много запросов! Подожди минутку" },
   standardHeaders: true,
   legacyHeaders: false,
 });
 app.use('/slow', limiter);
 
-// === Задача 4 + Бонус 1: Пагинация + выбор полей ===
+//Задача 4 + Бонус 1: Пагинация + выбор полей
 const { products } = require('./products-data');
 
 app.get('/products-data', (req, res) => {
@@ -91,5 +91,5 @@ setTimeout(() => {
 app.use(express.static('public'));
 
 app.listen(PORT, () => {
-  console.log(`🚀 Сервер запущен на http://localhost:${PORT}`);
+  console.log(`Сервер запущен на http://localhost:${PORT}`);
 });
